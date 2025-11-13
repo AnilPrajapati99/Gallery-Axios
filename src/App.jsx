@@ -9,10 +9,7 @@ function App() {
   const getData =async ()=>{
     const {data} =await axios.get(`https://picsum.photos/v2/list?page=${index}&limit=50`)
     setuserdata(data);
-    // console.log(data);
   }
-  console.log(userdata);
-
   useEffect(()=>{
     getData();
     setuserdata([]);
@@ -25,7 +22,7 @@ if (userdata.length>0) {
     return <div>
      <a href={e.url} target='__blank'>
        <div className='h-40 w-44 rounded-xl overflow-hidden' key={idx}>
-      <img className='h-full w-full  object-cover' src={e.download_url} alt="" />
+      <img loading='lazy' className='h-full w-full  object-cover' src={`https://picsum.photos/id/${e.id}/400/300`} alt="" />
     </div>
      </a>
     <h2>{e.author}</h2>
